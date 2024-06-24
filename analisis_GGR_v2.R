@@ -191,7 +191,7 @@ CI_interval_r2<-cbind(q2.25,q2.75)
 #combined_plot2 <- grid.arrange(pres2, confidence_plot2, ncol = 1)
 #print(combined_plot2)
 
-
+--##These data are not available yet##--
 #Basa de la Mora: charcoal and chironomid derived T
 #charcoal
 plotcharbsm <- bsmchar %>%
