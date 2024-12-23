@@ -14,7 +14,7 @@ This being said, to achieve this goal we had to perform some *preliminary steps*
 
 Whatever method available to estimate causality between time series requires that their sampling (i.e., space between adjacent observations) is uniform. However, this requirement clashes with the fact that experimental data is seldom uniformly sampled.
 
-To overcome this limitation, we have to *convert* our experimental (scattered) observations into a *continuous* time series. There are many interpolation methods but we decided to use the **Generalized Additive Models** [[2]](#2) (henceforth, GAM) available via the Python package named `pyGAM` [[3]](#3)[[4]](#4). GAM is a quite flexible method with (among other things) the advantage of over-fitting less than other methods (like, for instance, `spline()`). The figure below is an example of `spline()` over-fitting issue. We generated data following a polynomial function $y_t = \left(\alpha \, {x_t}^4 \right) \times \left(1 - x_t \right)^4 $ and added some Gaussian noise to it.
+To overcome this limitation, we have to *convert* our experimental (scattered) observations into a *continuous* time series. There are many interpolation methods but we decided to use the **Generalized Additive Models** [[2]](#2) (henceforth, GAM) available via the Python package named `pyGAM` [[3]](#3)[[4]](#4). GAM is a quite flexible method with (among other things) the advantage of over-fitting less than other methods (like, for instance, `spline()`). The figure below is an example of `spline()` over-fitting issue. We generated data following a polynomial function $y_t = (\alpha \, {x_t}^4 ) \times (1 - x_t )^4 $ and added some Gaussian noise to it.
 
 ![fitting with splines](plots-tests/test-fitting-splines.jpg)
 
@@ -138,7 +138,7 @@ Under this settings, the two time series look like this:
 
 ![two_species_synth](plots-tests/two-species-synth_timeseries.jpg)
 
-The optimal embedding dimension $E^\star$ can be computed via the pyEDM APIs and corresponds to $\max_{E}\rho$ corresponding to the red star displayed in the plot below. The numerical evaluation of $\max_E \rho$ tells us that $E^\star = 5$. However, it is clear (and safer) to assume $E^\star = 2$.
+The optimal embedding dimension $E^\star$ can be computed via the pyEDM APIs and corresponds to $\max_{E}\rho$ corresponding to the red star displayed in the plot below. The numerical evaluation of $\max_E \rho$ tells us that $E^\star = 9$. However, it is clear (and safer) to assume $E^\star = 2$.
 
 ![ccm_embed_dim](plots-tests/ccm-optimal_embed.jpg)
 
@@ -162,10 +162,10 @@ If we now run 100 randomizations of the $X$ timeseries via methods 1 and 2 descr
 
 | method | shuffling type  | reference value | $X \rightarrow Y$ | $p$-value |
 |---:| ---: | ---: | ---: | ---: |
-|CCM | 1 | 0.867 | $-0.003 \pm 0.062153$ | 0.00 |
-|    | 2 |  | $0.759 \pm 0.025298$ | 0.01 |
-| TE | 1 | 0.704 | $-0.011 \pm 0.159403$ | 0.00 |
-|    | 2 |  | $0.133 \pm 0.189504$ | 0.00 |
+|CCM | 1 | 0.867 | -0.003 $\pm$ 0.062153 | 0.00 |
+|    | 2 |  | 0.759 $\pm$ 0.025298 | 0.01 |
+| TE | 1 | 0.704 | -0.011 $\pm$ 0.159403 | 0.00 |
+|    | 2 |  | 0.133 $\pm$ 0.189504 | 0.00 |
 
 
 These results demonstate us that we can "*safely*" use both CCM and TE to estimate causality in our data.
