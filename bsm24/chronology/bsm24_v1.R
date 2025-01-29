@@ -11,7 +11,7 @@ lapply (libraries, library, character.only = TRUE)
 
 #we define the parameters for Rbacon
 thick<-10
-d.by<-2
+d.by<-1
 core.name="bsm24_v1"
 acc.mean=10
 acc.shape=1.5
